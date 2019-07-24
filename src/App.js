@@ -29,17 +29,32 @@ switchNameHandler = () => {
   })
 }
 
+switchNameHandler2 = (name) => {
+  //console.log("was called!");
+  // DON'T DO THIS !!!! this.state.persons[0].name = "Nahutab";
+  this.setState({
+    persons:[
+      {name:name, age:"33"},
+      {name:this.state.persons[1].name, age:"34"},
+      {name:this.state.persons[2].name, age:"35"},
+      {name:this.state.persons[3].name, age:"36"},
+      {name:this.state.persons[4].name, age:"37"}
+    ]
+  })
+}
+
+
   render() {
     return (
       <div className="App">
         <h1>Hi, i am your daddy!</h1>
         <p>{this.state.otherState}</p>
         <button onClick={this.switchNameHandler}>Switch name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person  name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-        <Person  name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-        <Person  name={this.state.persons[3].name} age={this.state.persons[3].age}>My Hobbies:Motorbike</Person>
-        <Person  name={this.state.persons[4].name} age={this.state.persons[4].age}/>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} myfunc={this.switchNameHandler} />
+        <Person  name={this.state.persons[1].name} age={this.state.persons[1].age} myfunc={this.switchNameHandler2.bind(this,"SomeName")} />
+        <Person  name={this.state.persons[2].name} age={this.state.persons[2].age} myfunc={ () =>this.switchNameHandler2("EvenBetter")} />
+        <Person  name={this.state.persons[3].name} age={this.state.persons[3].age} myfunc={this.switchNameHandler} >My Hobbies:Motorbike</Person>
+        <Person  name={this.state.persons[4].name} age={this.state.persons[4].age} myfunc={this.switchNameHandler} />
       </div>
     );
   }
