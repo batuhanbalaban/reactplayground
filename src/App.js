@@ -58,11 +58,20 @@ nameChanhedHandler = (event) => {
 }
 
   render() {
+
+    const mystyle = {
+      backgroundColor:'white',
+      font:'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor:'pointer'
+    };
+
     return (
       <div className="App">
         <h1>Hi, i am your daddy!</h1>
         <p>{this.state.otherState}</p>
-        <button onClick={this.switchNameHandler}>Switch name</button>
+        <button style={mystyle} onClick={this.switchNameHandler}>Switch name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} myfunc={this.switchNameHandler} />
         <Person  name={this.state.persons[1].name} age={this.state.persons[1].age} myfunc={this.switchNameHandler2.bind(this,"SomeName")} />
         <Person  name={this.state.persons[2].name} age={this.state.persons[2].age} myfunc={ () =>this.switchNameHandler2("EvenBetter")} />
