@@ -12,7 +12,8 @@ class App extends Component {
       {name:"kemal", age:"26"},
       {name:"ahmet", age:"27"}
     ],
-    otherState :"BlaBla"
+    otherState :"BlaBla",
+    showPersons : false
   }
 
 switchNameHandler = () => {
@@ -57,6 +58,10 @@ nameChanhedHandler = (event) => {
   })
 }
 
+togglePersonsHandler = () =>{
+const doesShow = this.state.showPersons;
+this.setState({showPersons:!doesShow});
+}
   render() {
 
     const mystyle = {
@@ -71,12 +76,17 @@ nameChanhedHandler = (event) => {
       <div className="App">
         <h1>Hi, i am your daddy!</h1>
         <p>{this.state.otherState}</p>
-        <button style={mystyle} onClick={this.switchNameHandler}>Switch name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} myfunc={this.switchNameHandler} />
-        <Person  name={this.state.persons[1].name} age={this.state.persons[1].age} myfunc={this.switchNameHandler2.bind(this,"SomeName")} />
-        <Person  name={this.state.persons[2].name} age={this.state.persons[2].age} myfunc={ () =>this.switchNameHandler2("EvenBetter")} />
-        <Person  name={this.state.persons[3].name} age={this.state.persons[3].age} myfunc={this.switchNameHandler} nameChanged={this.nameChanhedHandler}>My Hobbies:Motorbike</Person>
-        <Person  name={this.state.persons[4].name} age={this.state.persons[4].age} myfunc={this.switchNameHandler}/>
+        <button style={mystyle} onClick={this.togglePersonsHandler}>Switch name</button>
+        {
+          this.state.showPersons ? 
+        <div>
+          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} myfunc={this.switchNameHandler} />
+          <Person  name={this.state.persons[1].name} age={this.state.persons[1].age} myfunc={this.switchNameHandler2.bind(this,"SomeName")} />
+          <Person  name={this.state.persons[2].name} age={this.state.persons[2].age} myfunc={ () =>this.switchNameHandler2("EvenBetter")} />
+          <Person  name={this.state.persons[3].name} age={this.state.persons[3].age} myfunc={this.switchNameHandler} nameChanged={this.nameChanhedHandler}>My Hobbies:Motorbike</Person>
+          <Person  name={this.state.persons[4].name} age={this.state.persons[4].age} myfunc={this.switchNameHandler}/>
+        </div> : null
+        }
       </div>
     );
   }
