@@ -72,21 +72,25 @@ this.setState({showPersons:!doesShow});
       cursor:'pointer'
     };
 
+
+    let persons = null;
+    if(this.state.showPersons){
+      persons = (
+        <div>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} myfunc={this.switchNameHandler} />
+        <Person  name={this.state.persons[1].name} age={this.state.persons[1].age} myfunc={this.switchNameHandler2.bind(this,"SomeName")} />
+        <Person  name={this.state.persons[2].name} age={this.state.persons[2].age} myfunc={ () =>this.switchNameHandler2("EvenBetter")} />
+        <Person  name={this.state.persons[3].name} age={this.state.persons[3].age} myfunc={this.switchNameHandler} nameChanged={this.nameChanhedHandler}>My Hobbies:Motorbike</Person>
+        <Person  name={this.state.persons[4].name} age={this.state.persons[4].age} myfunc={this.switchNameHandler}/>
+      </div> 
+      );
+    }
     return (
       <div className="App">
         <h1>Hi, i am your daddy!</h1>
         <p>{this.state.otherState}</p>
         <button style={mystyle} onClick={this.togglePersonsHandler}>Switch name</button>
-        {
-          this.state.showPersons ? 
-        <div>
-          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} myfunc={this.switchNameHandler} />
-          <Person  name={this.state.persons[1].name} age={this.state.persons[1].age} myfunc={this.switchNameHandler2.bind(this,"SomeName")} />
-          <Person  name={this.state.persons[2].name} age={this.state.persons[2].age} myfunc={ () =>this.switchNameHandler2("EvenBetter")} />
-          <Person  name={this.state.persons[3].name} age={this.state.persons[3].age} myfunc={this.switchNameHandler} nameChanged={this.nameChanhedHandler}>My Hobbies:Motorbike</Person>
-          <Person  name={this.state.persons[4].name} age={this.state.persons[4].age} myfunc={this.switchNameHandler}/>
-        </div> : null
-        }
+        {persons}
       </div>
     );
   }
