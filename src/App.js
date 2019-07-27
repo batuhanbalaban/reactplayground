@@ -73,10 +73,24 @@ this.setState({showPersons:!doesShow});
 
       mystyle.backgroundColor = 'red';
     }
+
+
+
+    let classes = [];
+
+
+    if(this.state.persons.length<=2)
+    {
+      classes.push('red'); //classes = ['red'];
+    }
+    if(this.state.persons.length<=1)
+    {
+      classes.push('bold'); //classes = ['red','bold'];
+    }
     return (
       <div className="App">
         <h1>Hi, i am your daddy!</h1>
-        <p>{this.state.otherState}</p>
+        <p className={classes.join(' ')}>{this.state.otherState}</p>
         <button style={mystyle} onClick={this.togglePersonsHandler}>Toggle Person</button>
         {persons}
       </div>
