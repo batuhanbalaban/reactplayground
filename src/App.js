@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Radium from 'radium'
 import './App.css';
 import Person from  './Person/Person'
 
@@ -53,11 +52,7 @@ this.setState({showPersons:!doesShow});
       font:'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor:'pointer',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'black'
-      }
+      cursor:'pointer'
 
     };
 
@@ -78,10 +73,6 @@ this.setState({showPersons:!doesShow});
       );
 
       mystyle.backgroundColor = 'red';
-      mystyle[':hover']={
-        backgroundColor:'salmon',
-        color:'black'
-      }
     }
 
 
@@ -108,4 +99,4 @@ this.setState({showPersons:!doesShow});
   }
 }
 
-export default Radium(App);
+export default App;
