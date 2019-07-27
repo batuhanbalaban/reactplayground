@@ -47,7 +47,8 @@ this.setState({showPersons:!doesShow});
   render() {
 
     const mystyle = {
-      backgroundColor:'white',
+      backgroundColor:'green',
+      color:'white',
       font:'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -69,6 +70,8 @@ this.setState({showPersons:!doesShow});
           })}
       </div> 
       );
+
+      mystyle.backgroundColor = 'red';
     }
     return (
       <div className="App">
