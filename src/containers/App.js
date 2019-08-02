@@ -13,7 +13,7 @@ class App extends Component {
       {id:"4",name:"kemal", age:"26"},
       {id:"5",name:"ahmet", age:"27"}
     ],
-    otherState :"BlaBla",
+    otherState :"bla bla",
     showPersons : false
   }
 
@@ -63,6 +63,7 @@ this.setState({showPersons:!doesShow});
 
     return (
       <div className={classes.App}>
+        <p>{this.props.appName}</p>
         <Cockpit 
         showPersons = {this.state.showPersons} 
         persons = {this.state.persons}
