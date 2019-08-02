@@ -1,17 +1,38 @@
-import React from 'react';
-import ErrorBoundry from '../ErrorBoundary/ErrorBoundary';
+import React,{Component} from 'react';
 import Person from  './Person/Person'
 
-const persons = (props) =>(
+class Persons extends Component{
 
-    props.persons.map((person,index) => {
-        return <ErrorBoundry key={person.id}> <Person 
+  // static getDerivedStateFromProps(props,state){
+  //   console.log('Persons.js getDerivedStateFromProps');
+  //   return state;
+  // }
+
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('Persons.js shouldComponentUpdate');
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, presState){
+    console.log('Persons.js getSnapshotBeforeUpdate');
+    return {message:'Snapshot!'}
+  }
+  componentDidUpdate(prevProps, presState, snapshot){
+    console.log('Persons.js componentDidUpdate');
+    console.log(snapshot);
+  }
+  render(){
+    console.log('Persons.js rendering ...');
+    return this.props.persons.map((person,index) => {
+        return ( <Person 
         name={person.name} 
         age={person.age} 
-        click={() => props.clicked(index)}
-        changed={(event) => props.changed(event,person.id)} /> </ErrorBoundry>
-      })
+        click={() => this.props.clicked(index)}
+        key={person.id}
+        changed={(event) => this.props.changed(event,person.id)} /> );
+      });
+      
+  }
+}
 
-);
-
-export default persons;
+export default Persons;
