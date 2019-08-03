@@ -1,7 +1,33 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import classes from './Cockpit.css';
 
 const cocpit = (props) => {
+
+//this event will be fired every dom getDerivedStateFromProps and componentDidUpdate
+useEffect(()=>{
+  // console.log('Cockpit.js - > useEffect');
+  // setTimeout(()=>{
+  //   alert('Saved data to cloud!');
+  // },1000);
+});
+
+//this event will be fired whenever props.persons changed
+  useEffect(()=>{
+    // console.log('Cockpit.js - > useEffect');
+    // setTimeout(()=>{
+    //   alert('Saved data to cloud!');
+    // },1000);
+  },[props.persons]);
+
+
+//this event will be fired only once when dom created
+useEffect(()=>{
+  // console.log('Cockpit.js - > useEffect');
+  // setTimeout(()=>{
+  //   alert('Saved data to cloud!');
+  // },1000);
+},[]);
+
 
     let btnClass ='';
     if(props.showPersons){
