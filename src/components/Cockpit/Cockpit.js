@@ -23,11 +23,14 @@ useEffect(()=>{
 //this event will be fired only once when dom created
 useEffect(()=>{
   console.log('Cockpit.js - > useEffect');
-  setTimeout(()=>{
+  const timer = setTimeout(()=>{
     alert('Saved data to cloud!');
   },1000);
 
-  return () => {console.log('Cockpit.js - > useEffect - cleanup work')}
+  return () => {
+    clearTimeout(timer);
+    console.log('Cockpit.js - > useEffect - cleanup work')
+  };
 
 },[]);
 
