@@ -80,7 +80,7 @@ this.setState({showPersons:!doesShow});
         <button onClick = {()=>{this.setState({showCockpit:!this.state.showCockpit})}}>Remove Cockpit!</button>
         {this.state.showCockpit ? <Cockpit 
         showPersons = {this.state.showPersons} 
-        persons = {this.state.persons}
+        personsLength = {this.state.persons.length}
         clicked = {this.togglePersonsHandler}/> :null }
 
         {persons}
