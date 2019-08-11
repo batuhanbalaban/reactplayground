@@ -1,7 +1,10 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useRef} from 'react';
 import classes from './Cockpit.css';
+import AuthContext from '../../context/auth-context';
 
 const cocpit = (props) => {
+
+  const toggleBtnRef = useRef(null);
 
 //this event will be fired every dom getDerivedStateFromProps and componentDidUpdate
 useEffect(()=>{
@@ -23,12 +26,13 @@ useEffect(()=>{
 //this event will be fired only once when dom created
 useEffect(()=>{
   console.log('Cockpit.js - > useEffect');
-  const timer = setTimeout(()=>{
-    alert('Saved data to cloud!');
-  },1000);
+  // const timer = setTimeout(()=>{
+  //   alert('Saved data to cloud!');
+  // },1000);
+  toggleBtnRef.current.click();
 
   return () => {
-    clearTimeout(timer);
+    //clearTimeout(timer);
     console.log('Cockpit.js - > useEffect - cleanup work')
   };
 
@@ -61,7 +65,18 @@ useEffect(()=>{
         <div className = {classes.Cockpit}>
             <h1>Hi, i am your daddy!</h1>
             <p className={assignedClasses.join(' ')}>Be Careful!!</p>
-            <button className={btnClass} onClick={props.clicked}>Toggle Person</button>
+            <button 
+              ref={toggleBtnRef}
+              className={btnClass} 
+              onClick={props.clicked}>
+              Toggle Person
+              </button>
+              <AuthContext.Consumer>
+                    {(context) =>
+                        <button onClick={context.login}>Log in</button>
+                    }
+                </AuthContext.Consumer>
+              
         </div>
     );
 }
