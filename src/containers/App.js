@@ -11,11 +11,11 @@ class App extends Component {
     console.log('app.js constructor');
     this.state = {
       persons:[
-        {id:"1",name:"Batu", age:"23"},
-        {id:"2",name:"gulcn", age:"24"},
-        {id:"3",name:"dilek", age:"25"},
-        {id:"4",name:"kemal", age:"26"},
-        {id:"5",name:"ahmet", age:"27"}
+        {id:"1",name:"Batu", age:23},
+        {id:"2",name:"gulcn", age:24},
+        {id:"3",name:"dilek", age:25},
+        {id:"4",name:"kemal", age:26},
+        {id:"5",name:"ahmet", age:27}
       ],
       otherState :"bla bla",
       showPersons : false,
