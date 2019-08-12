@@ -1,10 +1,11 @@
-import React,{useEffect, useRef} from 'react';
+import React,{useEffect, useRef, useContext} from 'react';
 import classes from './Cockpit.css';
 import AuthContext from '../../context/auth-context';
 
 const cocpit = (props) => {
 
   const toggleBtnRef = useRef(null);
+  const authContext = useContext(AuthContext);
 
 //this event will be fired every dom getDerivedStateFromProps and componentDidUpdate
 useEffect(()=>{
@@ -71,11 +72,9 @@ useEffect(()=>{
               onClick={props.clicked}>
               Toggle Person
               </button>
-              <AuthContext.Consumer>
-                    {(context) =>
-                        <button onClick={context.login}>Log in</button>
-                    }
-                </AuthContext.Consumer>
+                 
+              <button onClick={authContext.login}>Log in</button>
+                  
               
         </div>
     );
